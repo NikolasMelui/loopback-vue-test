@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 
+	<!-- Head -->
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Client side VUE</title>
+		<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+		<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 	</head>
+
+	<!-- Body -->
 
 	<body>
 		<h1>Client side is working fine!</h1>
+		<p><br></p>
 		<div id="app">
+			<!-- Create the editor container -->
+			<div id="editor">
+				<p><br></p>
+			</div>
 			<li v-for="(post) in posts" :key="post">
 				<h2>{{post.title}}</h2>
 				<p>{{post.content}}</p>
 			</li>
 		</div>
+
 	</body>
 
+	<!-- CDNs -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+	<!-- Vue scripts -->
 	<script>
 		const app = new Vue({
 			el: '#app',
@@ -32,7 +49,12 @@
 					console.log(this.posts);
 				})
 			},
-		})
+		});
+
+		const quill = new Quill('#editor', {
+			theme: 'snow'
+		});
+
 	</script>
 
 </html>
